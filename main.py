@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from src.crew import build_crew
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -12,6 +11,8 @@ def home():
 
 @app.get("/generate")
 def generate(feature: str):
+    from src.crew import build_crew
+
     crew = build_crew(feature)
     result = crew.kickoff()
 
