@@ -1,26 +1,20 @@
-import argparse
+from fastapi import FastAPI
 from src.crew import build_crew
-import os
 from dotenv import load_dotenv
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--feature",
-        type=str,
-        required=True,
-        help="Feature request for code generation",
-    )
+load_dotenv()
 
-    args = parser.parse_args()
+app = FastAPI()
 
-    crew = build_crew(args.feature)
+@app.get("/")
+def home():
+    return {"status": "running"}
 
+@app.get("/generate")
+def generate(feature: str):
+    crew = build_crew(feature)
     result = crew.kickoff()
 
-    print("\n=== FINAL OUTPUT ===\n")
-    print(result)
-
-
-if __name__ == "__main__":
-    main()
+    return {
+        "result": str(result)
+    }
