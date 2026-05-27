@@ -1,21 +1,15 @@
 from fastapi import FastAPI
-from dotenv import load_dotenv
-
-load_dotenv()
 
 app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"status": "running"}
+    return {"status": "working"}
 
-@app.get("/generate")
-def generate(feature: str):
-    from src.crew import build_crew
-
-    crew = build_crew(feature)
-    result = crew.kickoff()
-
-    return {
-        "result": str(result)
-    }
+@app.get("/test")
+def test():
+    try:
+        from src.crew import build_crew
+        return {"import": "success"}
+    except Exception as e:
+        return {"error": str(e)}
