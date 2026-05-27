@@ -4,7 +4,7 @@ A multi-agent AI system built using CrewAI that simulates a collaborative softwa
 
 ## Overview
 
-This project demonstrates how specialized AI agents can work together to:
+This project demonstrates how specialized AI agents work together to:
 
 * Generate production-ready code
 * Review and optimize it
@@ -15,7 +15,7 @@ This project demonstrates how specialized AI agents can work together to:
 * CrewAI
 * OpenAI
 * Python 3.11
-* uv (fast dependency manager)
+* uv(fast dependency manager)
 
 ## Architecture
 
